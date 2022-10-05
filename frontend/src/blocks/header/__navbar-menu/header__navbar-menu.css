@@ -1,0 +1,24 @@
+.header__navbar-menu {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+  width: 24px;
+  cursor: pointer;
+  grid-area: nav-button;
+}
+
+.header__navbar-menu span,
+.header__navbar-menu::before,
+.header__navbar-menu::after {
+  display: block;
+  content: '';
+  background: #fff;
+  height: 3px;
+  transition: all 200ms;
+}
+
+@media screen and (min-width: 918px) {
+  .header__navbar-menu {
+    display: none;
+  }
+}

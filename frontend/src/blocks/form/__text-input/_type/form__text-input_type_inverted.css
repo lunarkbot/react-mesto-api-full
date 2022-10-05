@@ -1,0 +1,9 @@
+.form__text-input_type_inverted {
+  background-color: #000;
+  color: #fff;
+  border-color: #ccc;
+}
+
+.form__text-input_type_inverted::placeholder {
+  color: #ccc;
+}

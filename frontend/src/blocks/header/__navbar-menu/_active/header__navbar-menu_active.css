@@ -1,0 +1,24 @@
+.header__navbar-menu_active {
+  width: 20px;
+  height: 20px;
+  position: relative;
+
+}
+
+.header__navbar-menu_active span {
+  opacity: 0;
+}
+
+.header__navbar-menu_active::before {
+  transform: skewY(-45deg);
+  width: 18px;
+  position: relative;
+  top: 10px;
+}
+
+.header__navbar-menu_active::after {
+  transform: skewY(45deg);
+  width: 18px;
+  position: relative;
+  top: -6px;
+}

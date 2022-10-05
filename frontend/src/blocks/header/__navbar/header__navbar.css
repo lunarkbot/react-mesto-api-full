@@ -1,0 +1,7 @@
+.header__navbar {
+  display: flex;
+  grid-area: nav-button;
+  column-gap: 24px;
+  font-size: 18px;
+  line-height: 22px;
+}
