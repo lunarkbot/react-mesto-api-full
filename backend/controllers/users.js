@@ -5,6 +5,8 @@ const NotFoundError = require('../errors/not-found-error');
 const BadRequestError = require('../errors/bad-request-error');
 const ConflictError = require('../errors/conflict-error');
 
+const { SECRET_KEY } = require('../constants');
+
 const ERROR_404 = 'Пользователь с указанным ID не найден.';
 
 module.exports.getUsers = (req, res, next) => {
@@ -123,7 +125,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        'iddqd&idkfa',
+        SECRET_KEY,
         { expiresIn: '7d' },
       );
 
