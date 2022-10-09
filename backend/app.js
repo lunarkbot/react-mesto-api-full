@@ -7,6 +7,7 @@ const auth = require('./middlewares/auth');
 const errorsHandler = require('./middlewares/errorsHandler');
 const NotFoundError = require('./errors/not-found-error');
 const cors = require('./middlewares/cors');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -22,6 +23,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 app.listen(PORT);
 
+app.use(requestLogger);
+
 app.use('/', require('./routes'));
 
 app.use(auth);
@@ -32,5 +35,6 @@ app.all('/*', (req, res, next) => {
   next(new NotFoundError('Страница не найдена.'));
 });
 
+app.use(errorLogger);
 app.use(errors());
 app.use(errorsHandler);
