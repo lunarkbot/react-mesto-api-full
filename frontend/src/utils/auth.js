@@ -25,19 +25,18 @@ class Auth {
       body: JSON.stringify({
         password,
         email
-      })
+      }),
+      credentials: 'include',
     }).then(res => this._checker(res, 'signUp'));
   }
 
-  checkToken(token) {
-    if (!token) return Promise.reject(`Ошибка: Отсутствует токен`);;
-
+  checkToken() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
       headers: {
         ...this._headers,
-        "Authorization" : `Bearer ${token}`
       },
+      credentials: 'include',
     }).then(res => this._checker(res, 'checkToken'));
   }
 }

@@ -21,11 +21,8 @@ function Login(props) {
 
     auth.signIn(userData)
       .then(data => {
-        if (data.token) {
-          localStorage.setItem('token', data.token);
-          props.onLogin(userData.email);
-          props.history.push('/');
-        }
+        props.onLogin(userData.email);
+        props.history.push('/');
       })
       .catch(err => {
         setIsOpen(true);
