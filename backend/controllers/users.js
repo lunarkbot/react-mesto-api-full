@@ -135,7 +135,8 @@ module.exports.login = (req, res, next) => {
           httpOnly: true,
           sameSite: 'none',
           secure: true,
-          domain: '/',
+          domain: 'localhost',
+          path: '/',
         })
         .send({
           _id: user._id,
