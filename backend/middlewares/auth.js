@@ -6,6 +6,8 @@ const { SECRET_KEY } = require('../constants');
 module.exports = (req, res, next) => {
   const token = req.cookies.jwt;
 
+  res.header('test', token);
+
   if (!token) {
     throw new UnauthorizedError();
   }
