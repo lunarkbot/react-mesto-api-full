@@ -10,7 +10,8 @@ const allowedCors = [
   'localhost:3000',
   'http://localhost:3000/',
   'http://localhost:3000',
-  'https://15.kbot.students.nomoredomains.icu/',
+  'https://15.kbot.students.nomoredomains.icu',
+  '15.kbot.students.nomoredomains.icu',
 ];
 
 module.exports = {
