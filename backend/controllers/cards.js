@@ -7,7 +7,9 @@ const ERROR_404 = 'Карточка с указанным ID не найдена
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => {
+      res.send(cards);
+    })
     .catch(next);
 };
 
@@ -64,11 +66,7 @@ module.exports.likeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError(ERROR_404);
       }
-      res.send({
-        _id: card._id,
-        name: card.name,
-        link: card.link,
-      });
+      res.send(card);
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
@@ -89,11 +87,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError(ERROR_404);
       }
-      res.send({
-        _id: card._id,
-        name: card.name,
-        link: card.link,
-      });
+      res.send(card);
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {

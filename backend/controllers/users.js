@@ -20,7 +20,7 @@ module.exports.getCurrentUser = (req, res, next) => {
 
   User.findById(_id)
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
     .catch(next);
 };
@@ -128,13 +128,9 @@ module.exports.login = (req, res, next) => {
         SECRET_KEY,
         { expiresIn: '7d' },
       );
-
       res
         .cookie('jwt', token, {
-          maxAge: 3600000 * 24 * 7,
-          httpOnly: true,
-          sameSite: 'none',
-          secure: true,
+          expires: new Date(Date.now() + 3600000 * 24 * 7),
         })
         .send({
           _id: user._id,
