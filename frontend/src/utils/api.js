@@ -6,27 +6,27 @@ import {
 class Api {
   constructor({baseUrl, headers, checker}) {
     this._headers = headers;
-    this._userUrl = `${baseUrl}/users/me`;
     this._cardsUrl = `${baseUrl}/cards`;
+    this._baseUrl = `${baseUrl}`;
     this._checker = checker;
   }
 
   getUserData() {
-    return fetch(this._userUrl, {
+    return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
       credentials: 'include',
     }).then(this._checker);
   }
 
   setUserData(name, about) {
-    return fetch(this._userUrl, {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         name,
         about
       }),
-      credentials: 'include',
     }).then(this._checker);
   }
 
@@ -66,7 +66,7 @@ class Api {
   }
 
   setAvatar(avatar) {
-    return fetch(`${this._userUrl}/avatar`,{
+    return fetch(`${this._baseUrl}/users/me/avatar`,{
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({

@@ -6,8 +6,8 @@ import InfoTooltip from './InfoTooltip';
 function Login(props) {
 
   const [userData, setUserData] = useState({
-    email: '',
-    password: ''
+    email: '99@v99.me',
+    password: '12345678'
   });
 
   const [isOpen, setIsOpen] = useState(false);

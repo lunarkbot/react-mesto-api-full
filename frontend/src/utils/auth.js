@@ -1,4 +1,4 @@
-import { AUTH_BASEURL } from './constants';
+import {API_BASEURL} from './constants';
 
 class Auth {
   constructor({baseUrl, headers, checker}) {
@@ -14,7 +14,8 @@ class Auth {
       body: JSON.stringify({
         password,
         email
-      })
+      }),
+      credentials: 'include',
     }).then(res => this._checker(res, 'signIn'));
   }
 
@@ -42,7 +43,7 @@ class Auth {
 }
 
 export default new Auth( {
-  baseUrl: AUTH_BASEURL,
+  baseUrl: API_BASEURL,
   headers: {
     "Content-Type": "application/json"
   },

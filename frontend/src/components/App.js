@@ -27,11 +27,10 @@ function App(props) {
   const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
     setIsChecked(false);
 
-    auth.checkToken(token)
-      .then(({ data }) => {
+    auth.checkToken()
+      .then((data) => {
         setCurrentUser({
           loggedIn: true,
           email: data.email,

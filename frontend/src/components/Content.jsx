@@ -109,11 +109,14 @@ function Content(props) {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
 
+    const isLiked = card.likes.some(i => i === currentUser._id);
+    console.log(isLiked)
     api.updateLikes(card._id, !isLiked)
       .then((newCard) => {
+        console.log(newCard, 'new')
         setCards((state) => state.map((c) => {
+          console.log(c, 'C')
           return c._id === card._id ? newCard : c;
         }));
       })
@@ -151,7 +154,7 @@ function Content(props) {
 
   useEffect(() => {
     api.getCards()
-      .then(cards => setCards([...cards]))
+      .then(cards => setCards([...cards].reverse()))
       .catch(err => console.log(err));
 
     api.getUserData()
